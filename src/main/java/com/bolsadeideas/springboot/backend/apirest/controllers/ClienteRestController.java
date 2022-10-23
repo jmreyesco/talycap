@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-//import org.slf4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -52,11 +53,12 @@ public class ClienteRestController {
 	@Autowired
 	private IUploadFileService uploadService;
 
-	// private final Logger log =
-	// LoggerFactory.getLogger(ClienteRestController.class);
+	 private final Logger log = LoggerFactory.getLogger(ClienteRestController.class);
+	 //LoggerFactory.getLogger(ClienteRestController.class);
 
 	@GetMapping("/clientes")
 	public List<Cliente> index() {
+		log.info("Ingreso a metodo index");
 		return clienteService.findAll();
 	}
 
@@ -191,6 +193,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
+	//Metodo para subir imagenes
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@PostMapping("/clientes/upload")
 	public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id) {
@@ -225,6 +228,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
+
 	@GetMapping("/uploads/img/{nombreFoto:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto) {
 
@@ -246,5 +250,20 @@ public class ClienteRestController {
 	@GetMapping("/clientes/regiones")
 	public List<Region> listarRegiones() {
 		return clienteService.findAllRegiones();
+	}
+	
+	
+	static  Double descuentoToSend;
+	
+	public static double descuento(int cantidad, int precioSend, boolean LogisticT) {	
+
+		if (cantidad >10 && LogisticT) {
+			 descuentoToSend = precioSend *0.05;		
+		}else {
+				descuentoToSend = precioSend *0.03;			
+		}
+		System.out.println(descuentoToSend);
+		return descuentoToSend;
+		
 	}
 }

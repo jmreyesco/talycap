@@ -21,6 +21,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
 @Service
 public class UsuarioService implements IUsuarioService, UserDetailsService{
 	
+	//Mensajes de errores en el log
 	private Logger logger = LoggerFactory.getLogger(UsuarioService.class);
 
 	@Autowired

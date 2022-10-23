@@ -49,9 +49,14 @@ public class Cliente implements Serializable {
 	
 	private String foto;
 	
+	//Realizacion del Join el cliente contiene "regiones"
+	//Json anidados
+	//Relacion muchos a uno, carga perezosa se realiza la carga solo cuando se invoque el metodo
 	@NotNull(message="la región no puede ser vacia")
 	@ManyToOne(fetch=FetchType.LAZY)
+	//Nombre que le quiero colocar a la llave foranea (en esta clase)
 	@JoinColumn(name="region_id")
+	//omitor atributos adicionales
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Region region;
 	

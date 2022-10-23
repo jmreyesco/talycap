@@ -1,12 +1,14 @@
 package com.bolsadeideas.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +37,17 @@ public class Role implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+//	@ManyToMany(mappedBy = "roles")
+//	private List<Usuario> usuario;
+//
+//	public List<Usuario> getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(List<Usuario> usuario) {
+//		this.usuario = usuario;
+//	}
 
 	/**
 	 * 

@@ -38,6 +38,11 @@ public class Usuario implements Serializable {
 	@Column(unique = true)
 	private String email;
 
+	//Lista de roles, un usuario puede tener muchos roles y viceversa (many to many)
+	 // Array--- String[] roles={"Java","Python","PHP","C++"};  ---
+	//Converting Array to List  ---	List<Role> list=new ArrayList<Role>();  --
+	// lo recorremos --for(String lang:array){  list.add(lang);  }  --
+	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name="usuario_id"),
 	inverseJoinColumns=@JoinColumn(name="role_id"),
