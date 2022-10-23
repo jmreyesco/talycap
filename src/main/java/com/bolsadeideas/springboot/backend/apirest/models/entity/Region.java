@@ -19,6 +19,8 @@ public class Region implements Serializable {
 
 	private String nombre;
 	
+	TipoLogistica tipoLogisticas;
+	
 	@Column(name="tipo_logistica")
 	private String tipoLogistica;
 	
@@ -26,7 +28,7 @@ public class Region implements Serializable {
 	private String tipoProducto;
 	
 	@Column(name="cantidad_producto")
-	private String cantidadProducto;
+	private Long cantidadProducto;
 	
 	@Column(name="fecha_registro")
 	private String fechaRegistro;
@@ -38,7 +40,7 @@ public class Region implements Serializable {
 	private String bodegaEntrega;
 	
 	@Column(name="precio_envio")
-	private String precioEnvio;
+	private Long precioEnvio;
 	
 	@Column(name="numero_placa_flota")
 	private String numeroPlacaFlota;
@@ -62,11 +64,11 @@ public class Region implements Serializable {
 		this.tipoProducto = tipoProducto;
 	}
 
-	public String getCantidadProducto() {
+	public Long getCantidadProducto() {
 		return cantidadProducto;
 	}
 
-	public void setCantidadProducto(String cantidadProducto) {
+	public void setCantidadProducto(Long cantidadProducto) {
 		this.cantidadProducto = cantidadProducto;
 	}
 
@@ -94,11 +96,11 @@ public class Region implements Serializable {
 		this.bodegaEntrega = bodegaEntrega;
 	}
 
-	public String getPrecioEnvio() {
+	public Long getPrecioEnvio() {
 		return precioEnvio;
 	}
 
-	public void setPrecioEnvio(String precioEnvio) {
+	public void setPrecioEnvio(Long precioEnvio) {
 		this.precioEnvio = precioEnvio;
 	}
 
